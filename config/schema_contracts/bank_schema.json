@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BankCustomerChurnSchema",
+  "type": "object",
+  "properties": {
+    "RowNumber": { "type": "integer" },
+    "CustomerId": { "type": ["integer", "string"] },
+    "Surname": { "type": "string" },
+    "CreditScore": { "type": "integer", "minimum": 300, "maximum": 850 },
+    "Geography": { "type": "string" },
+    "Gender": { "type": "string", "enum": ["Male", "Female"] },
+    "Age": { "type": "integer", "minimum": 18, "maximum": 120 },
+    "Tenure": { "type": "integer", "minimum": 0 },
+    "Balance": { "type": "number" },
+    "NumOfProducts": { "type": "integer", "minimum": 1 },
+    "HasCrCard": { "type": "integer", "enum": [0, 1] },
+    "IsActiveMember": { "type": "integer", "enum": [0, 1] },
+    "EstimatedSalary": { "type": "number" },
+    "Exited": { "type": "integer", "enum": [0, 1] }
+  },
+  "required": [
+    "CustomerId", "CreditScore", "Geography", "Gender", "Age",
+    "Balance", "NumOfProducts", "HasCrCard", "IsActiveMember", "EstimatedSalary"
+  ]
+}

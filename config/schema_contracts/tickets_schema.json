@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CustomerSupportTicketsSchema",
+  "type": "object",
+  "properties": {
+    "Ticket ID": { "type": "string" },
+    "Customer Name": { "type": "string" },
+    "Customer Email": { "type": "string" },
+    "Customer Age": { "type": "integer" },
+    "Customer Gender": { "type": "string" },
+    "Product Purchased": { "type": "string" },
+    "Date of Purchase": { "type": "string" },
+    "Ticket Type": { "type": "string" },
+    "Ticket Subject": { "type": "string" },
+    "Ticket Description": { "type": "string" },
+    "Ticket Status": { "type": "string" },
+    "Ticket Priority": { "type": "string" },
+    "Ticket Channel": { "type": "string" },
+    "Ticket Creation Date": { "type": "string" },
+    "First Response Time": { "type": "string" },
+    "Resolution Time": { "type": "string" },
+    "Customer Satisfaction Rating": { "type": ["integer", "number", "null"] },
+    "customerID": { "type": "string" }
+  },
+  "required": [
+    "Ticket ID", "Ticket Subject", "Ticket Description", "Ticket Priority", "Product Purchased"
+  ]
+}

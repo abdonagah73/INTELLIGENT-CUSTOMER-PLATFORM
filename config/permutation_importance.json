@@ -1,0 +1,77 @@
+[
+  {
+    "feature": "contract_type_encoded",
+    "importance_mean": 0.013200851667849501,
+    "importance_std": 0.007301530815961202
+  },
+  {
+    "feature": "tenure",
+    "importance_mean": 0.011071682044002796,
+    "importance_std": 0.002788769723830869
+  },
+  {
+    "feature": "is_high_risk_contract",
+    "importance_mean": 0.007665010645848081,
+    "importance_std": 0.0033709984633180767
+  },
+  {
+    "feature": "PaymentMethod_Electronic check",
+    "importance_mean": 0.006671398154719644,
+    "importance_std": 0.0032554563353242786
+  },
+  {
+    "feature": "TotalCharges",
+    "importance_mean": 0.005961674946770712,
+    "importance_std": 0.005758825486189022
+  },
+  {
+    "feature": "InternetService_Fiber optic",
+    "importance_mean": 0.0014194464158977516,
+    "importance_std": 0.0029434267357455863
+  },
+  {
+    "feature": "SeniorCitizen",
+    "importance_mean": 0.0011355571327182012,
+    "importance_std": 0.001153163719607675
+  },
+  {
+    "feature": "login_trend",
+    "importance_mean": 0.0009936124911284372,
+    "importance_std": 0.001987224982256954
+  },
+  {
+    "feature": "ticket_escalation_flag",
+    "importance_mean": 0.0005677785663590785,
+    "importance_std": 0.00113555713271824
+  },
+  {
+    "feature": "ticket_sentiment_score",
+    "importance_mean": 0.0005677785663590562,
+    "importance_std": 0.00028388928317952806
+  },
+  {
+    "feature": "billing_delta_mom",
+    "importance_mean": 0.0004258339247693144,
+    "importance_std": 0.0025232631418923147
+  },
+  {
+    "feature": "ticket_complaint_topics_performance",
+    "importance_mean": 0.00042583392476927,
+    "importance_std": 0.0005677785663591006
+  },
+  {
+    "feature": "MonthlyCharges",
+    "importance_mean": 0.0002838892831795281,
+    "importance_std": 0.0030311080914212254
+  },
+  {
+    "feature": "Partner",
+    "importance_mean": 0.00014194464158976406,
+    "importance_std": 0.0016431280202683053
+  },
+  {
+    "feature": "competitor_promotion_flag",
+    "importance_mean": 0.0,
+    "importance_std": 0.0
+  }
+]

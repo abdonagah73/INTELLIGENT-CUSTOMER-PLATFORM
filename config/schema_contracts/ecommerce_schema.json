@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EcommerceCustomerChurnSchemaPlaceholder",
+  "description": "Skeleton placeholder for future E-Commerce Customer Churn integration.",
+  "type": "object",
+  "properties": {
+    "customerID": { "type": "string" },
+    "logins_per_week": { "type": "integer" },
+    "cart_abandonment_rate": { "type": "number" },
+    "time_since_last_order": { "type": "integer" },
+    "preferred_device": { "type": "string" },
+    "preferred_payment_mode": { "type": "string" },
+    "days_since_last_order": { "type": "integer" }
+  },
+  "required": ["customerID"]
+}

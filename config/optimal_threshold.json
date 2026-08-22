@@ -1,0 +1,10 @@
+{
+  "threshold": 0.16,
+  "cost_fn": 1680,
+  "cost_fp": 50,
+  "min_cost": 41960,
+  "false_negatives": 2,
+  "false_positives": 772,
+  "true_positives": 372,
+  "true_negatives": 263
+}
