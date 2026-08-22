@@ -1,0 +1,19 @@
+{
+  "snapshot_date": "2024-03-01",
+  "pipeline_version": "v1.0",
+  "row_count": 7043,
+  "evidently_ai_validation": {
+    "status": "PASSED",
+    "checks_run": [
+      "null_rate",
+      "zero_variance",
+      "target_leakage"
+    ],
+    "psi_validation_reference": "N/A - Initial baseline snapshot"
+  },
+  "source_files": {
+    "telco": "data/raw/telco/WA_Fn-UseC_-Telco-Customer-Churn.csv",
+    "bank": "data/raw/bank/Churn_Modelling.csv",
+    "tickets": "data/raw/tickets/customer_support_tickets.csv"
+  }
+}
