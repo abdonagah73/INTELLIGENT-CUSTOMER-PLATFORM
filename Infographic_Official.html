@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Intelligence Platform - Official Infographic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #070d19;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .poster {
+            width: 1000px;
+            background: linear-gradient(180deg, #0b1528 0%, #070d19 100%);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(56, 189, 248, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .glow-circle {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            right: -100px;
+            pointer-events: none;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+        .tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 34px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #94a3b8;
+            font-size: 15px;
+        }
+        .team-bar {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .team-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            color: #38bdf8;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .members-list {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .member-pill {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .member-pill span {
+            color: #38bdf8;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .card {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 22px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .card-num {
+            background: #0284c7;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: #e2e8f0;
+        }
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .feature-item {
+            font-size: 13.5px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.4;
+        }
+        .feature-item strong {
+            color: #f8fafc;
+        }
+        .badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .metric-box {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            margin-top: 12px;
+        }
+        .metric-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+        }
+        .kpi-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+        .kpi-desc {
+            font-size: 12px;
+            color: #cbd5e1;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #64748b;
+        }
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .poster {
+                box-shadow: none;
+                border: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="poster">
+    <div class="glow-circle"></div>
+
+    <div class="header">
+        <div class="tag">AI & Machine Learning Enterprise System</div>
+        <h1>Intelligent Customer Intelligence & Retention Platform</h1>
+        <p class="subtitle">End-to-End Retention Ecosystem: Predictive ML • GenAI & RAG • Closed-Loop MLOps</p>
+    </div>
+
+    <!-- Team Members Bar -->
+    <div class="team-bar">
+        <div class="team-title">👥 Project Sub-Team:</div>
+        <div class="members-list">
+            <div class="member-pill"><span>•</span> Abdelrahman Mohamed Nagah</div>
+            <div class="member-pill"><span>•</span> Ahmed Adel Abdelaziz</div>
+            <div class="member-pill"><span>•</span> Ahmed Waled Abdel-Satar</div>
+            <div class="member-pill"><span>•</span> Adham Maged Mohamed</div>
+        </div>
+    </div>
+
+    <!-- Key Performance Metrics Row -->
+    <div class="kpi-row" style="margin-bottom: 25px;">
+        <div class="kpi-card">
+            <div class="kpi-num">0.8317</div>
+            <div class="kpi-desc">XGBoost ROC-AUC Score</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-num">99.47%</div>
+            <div class="kpi-desc">At-Risk Recall Rate</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-num">0.16</div>
+            <div class="kpi-desc">Optimal Cost Threshold</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-num">$4.15M</div>
+            <div class="kpi-desc">Projected Net ROI Savings</div>
+        </div>
+    </div>
+
+    <!-- Core Architecture Grid -->
+    <div class="grid-2">
+        <!-- Layer 1: Data Ingestion & ETL -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-num">1</div>
+                <div class="card-title">Data Ingestion & Feature Store</div>
+            </div>
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <span>📁</span>
+                    <div><strong>Multi-Source Data Ingestion:</strong> Telco (7,043 users), Banking (10,000 users), Support Tickets (8,469 records).</div>
+                </li>
+                <li class="feature-item">
+                    <span>🛡️</span>
+                    <div><strong>Schema Validation:</strong> Automated fail-fast data contracts via JSON schemas.</div>
+                </li>
+                <li class="feature-item">
+                    <span>⚡</span>
+                    <div><strong>Engineered Features:</strong> Tenure billing ratios, bundle size, contract risk flags, and streaming simulations.</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Layer 2: Predictive Modeling & XAI -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-num">2</div>
+                <div class="card-title">Predictive ML & Explainability (XAI)</div>
+            </div>
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <span>🤖</span>
+                    <div><strong>Models Evaluated:</strong> XGBoost Classifier, Random Forest, Gradient Boosting.</div>
+                </li>
+                <li class="feature-item">
+                    <span>🎯</span>
+                    <div><strong>Optuna Tuning:</strong> 30 Bayesian trials with SMOTE class rebalancing.</div>
+                </li>
+                <li class="feature-item">
+                    <span>🔍</span>
+                    <div><strong>SHAP Explainability:</strong> Real-time extraction of top 3 churn drivers per customer.</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <!-- Layer 3: Generative AI & RAG -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-num">3</div>
+                <div class="card-title">GenAI & Semantic RAG Engine</div>
+            </div>
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <span>📚</span>
+                    <div><strong>FAISS Vector Database:</strong> Dense vector indexing via SentenceTransformers (<span class="badge">all-MiniLM-L6-v2</span>).</div>
+                </li>
+                <li class="feature-item">
+                    <span>💡</span>
+                    <div><strong>Dynamic Retention Playbook:</strong> Strategy retrieval mapped to individual churn drivers.</div>
+                </li>
+                <li class="feature-item">
+                    <span>⚡</span>
+                    <div><strong>Dual-Provider LLM:</strong> Ultra-fast execution via Groq LPU (<span class="badge">Llama-3.1-70b</span>) or OpenAI (<span class="badge">GPT-4o-mini</span>).</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Layer 4: Closed-Loop MLOps & RLHF -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-num">4</div>
+                <div class="card-title">Closed-Loop MLOps & RLHF</div>
+            </div>
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <span>🚨</span>
+                    <div><strong>PSI Drift Detection:</strong> Automated monitoring triggering retraining at PSI > 0.20.</div>
+                </li>
+                <li class="feature-item">
+                    <span>🔄</span>
+                    <div><strong>Human-in-the-Loop (RLHF):</strong> Sample reweighting (2.0x for successful retention, 0.5x for churned).</div>
+                </li>
+                <li class="feature-item">
+                    <span>🚀</span>
+                    <div><strong>Continuous Integration:</strong> Staging safety gates and automatic model registry promotion.</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Serving Layer Summary -->
+    <div class="card" style="margin-bottom: 0;">
+        <div class="card-header">
+            <div class="card-num">5</div>
+            <div class="card-title">Deployment & Interactive Business Operations</div>
+        </div>
+        <div class="grid-3" style="margin-bottom: 0;">
+            <div class="metric-box" style="margin-top: 0;">
+                <div class="metric-value">FastAPI</div>
+                <div class="metric-label">Microservice REST API (Dockerized)</div>
+            </div>
+            <div class="metric-box" style="margin-top: 0;">
+                <div class="metric-value">Streamlit</div>
+                <div class="metric-label">Glassmorphic Live Analytics UI</div>
+            </div>
+            <div class="metric-box" style="margin-top: 0;">
+                <div class="metric-value">Batch CSV</div>
+                <div class="metric-label">Real-Time User Data Upload & Scoring</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Intelligent Customer Retention Platform • All Rights Reserved</div>
+        <div>Submission Date: 19-08-2026</div>
+    </div>
+</div>
+
+</body>
+</html>
