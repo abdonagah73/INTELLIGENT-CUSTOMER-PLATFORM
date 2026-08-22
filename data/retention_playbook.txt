@@ -1,0 +1,29 @@
+[PLAYBOOK SECTION: Price-Sensitive Churners]
+Scenario: Customers who complain about pricing, high monthly bills, or competitor deals (e.g., AT&T, Verizon, T-Mobile).
+Strategy: Offer a discount or price match. If the customer has been with us for more than 12 months, offer a 20% loyalty discount for the next 12 months. If the customer is on month-to-month and complains, offer a contract transition to a 1-year contract with a monthly price guarantee.
+Key drivers: MonthlyCharges, competitor_news_volume_7d, price_competitiveness_ratio.
+Estimated success rate: 85% for long-tenure customers; 65% for month-to-month customers.
+
+[PLAYBOOK SECTION: Tech-Issue & Fiber Optic Service Churners]
+Scenario: Customers complaining about slow speeds, internet outages, or device protection. High concentration in Fiber Optic service tier.
+Strategy: Immediate technical dispatch and support bundle upgrade. Offer free Tech Support add-on for 6 months. If a physical router issue is detected, ship a replacement router next-day. Waive the next monthly bill as an apology for service disruption.
+Key drivers: TechSupport, InternetService_Fiber_optic, support_contacts_30d, usage_delta_mom.
+Estimated success rate: 75% success rate if technical resolution occurs within 48 hours.
+
+[PLAYBOOK SECTION: Long-Tenure Loyalty Churners]
+Scenario: Customers with tenure > 48 months who exhibit mild churn signals (e.g. slight drop in portal logins or contract expiry).
+Strategy: Proactive loyalty outreach. Reach out via a dedicated account manager. Do not offer basic discounts; instead, offer a free service bundle upgrade (e.g. add streaming TV or movies, or upgrade internet speed tier) for no additional cost.
+Key drivers: tenure, contract_type_encoded, logins_30d_rolling_avg.
+Estimated success rate: 90% retention success.
+
+[PLAYBOOK SECTION: Billing Disputes Churners]
+Scenario: Customers complaining about extra charges, billing errors, or double charges.
+Strategy: Correct the billing ledger immediately. Issue a refund credit to the customer's account for any disputed charges. Send an email confirmation with the ledger adjustment within 1 hour. Apply a $15 service credit to their next monthly statement.
+Key drivers: MonthlyCharges, PaperlessBilling, ticket_complaint_topics_billing.
+Estimated success rate: 92% retention rate.
+
+[PLAYBOOK SECTION: Contract Expiry & Month-to-Month Churners]
+Scenario: Customers on month-to-month contract with tenure < 12 months (high risk).
+Strategy: Transition them to a yearly contract by offering a free trial of premium add-on services (such as Online Security and Online Backup) for 3 months if they sign a 1-year contract. Explain the price stability benefits of yearly contracts.
+Key drivers: contract_type_encoded, tenure, is_high_risk_contract.
+Estimated success rate: 55% transition success.

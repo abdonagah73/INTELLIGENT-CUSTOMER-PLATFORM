@@ -1,0 +1,51 @@
+customerID,logins_per_week,cart_abandonment_rate,time_since_last_order,preferred_device,preferred_payment_mode,days_since_last_order
+0001-ABCD,7,0.14,41,Desktop,Credit Card,60
+0002-ABCD,4,0.59,28,Desktop,Net Banking,113
+0003-ABCD,13,0.24,135,Tablet,UPI,2
+0004-ABCD,11,0.15,72,Desktop,UPI,129
+0005-ABCD,8,0.86,12,Tablet,Credit Card,48
+0006-ABCD,13,0.87,162,Mobile,UPI,140
+0007-ABCD,5,0.75,33,Tablet,UPI,37
+0008-ABCD,7,0.34,48,Desktop,Net Banking,160
+0009-ABCD,10,0.18,151,Mobile,Net Banking,9
+0010-ABCD,3,0.65,62,Mobile,Net Banking,99
+0011-ABCD,7,0.45,37,Mobile,Net Banking,147
+0012-ABCD,11,0.2,99,Tablet,Credit Card,48
+0013-ABCD,11,0.5,172,Desktop,Net Banking,131
+0014-ABCD,8,0.13,104,Mobile,UPI,148
+0015-ABCD,5,0.83,35,Mobile,Credit Card,152
+0016-ABCD,4,0.31,101,Mobile,UPI,54
+0017-ABCD,8,0.63,175,Tablet,UPI,120
+0018-ABCD,8,0.35,131,Tablet,UPI,161
+0019-ABCD,3,0.52,1,Desktop,Net Banking,152
+0020-ABCD,6,0.54,5,Tablet,Net Banking,116
+0021-ABCD,5,0.25,142,Mobile,Credit Card,75
+0022-ABCD,2,0.88,103,Desktop,Credit Card,113
+0023-ABCD,8,0.72,27,Mobile,Net Banking,164
+0024-ABCD,12,0.85,137,Mobile,UPI,166
+0025-ABCD,14,0.82,15,Tablet,Credit Card,104
+0026-ABCD,6,0.58,90,Desktop,Net Banking,84
+0027-ABCD,2,0.84,42,Tablet,Net Banking,112
+0028-ABCD,12,0.17,124,Tablet,Net Banking,99
+0029-ABCD,5,0.26,179,Desktop,UPI,153
+0030-ABCD,1,0.14,63,Mobile,Net Banking,93
+0031-ABCD,12,0.36,96,Mobile,Net Banking,146
+0032-ABCD,10,0.41,52,Desktop,Net Banking,128
+0033-ABCD,6,0.32,96,Mobile,Net Banking,110
+0034-ABCD,13,0.76,132,Desktop,Credit Card,82
+0035-ABCD,12,0.39,151,Desktop,Credit Card,54
+0036-ABCD,9,0.32,143,Tablet,Net Banking,163
+0037-ABCD,1,0.53,171,Desktop,UPI,169
+0038-ABCD,11,0.21,29,Tablet,Credit Card,161
+0039-ABCD,11,0.74,36,Mobile,Net Banking,68
+0040-ABCD,10,0.16,13,Mobile,Credit Card,33
+0041-ABCD,12,0.89,160,Mobile,Credit Card,142
+0042-ABCD,12,0.72,71,Mobile,UPI,21
+0043-ABCD,14,0.26,86,Tablet,Net Banking,48
+0044-ABCD,14,0.1,28,Mobile,Net Banking,148
+0045-ABCD,14,0.75,66,Desktop,UPI,128
+0046-ABCD,3,0.67,170,Desktop,UPI,136
+0047-ABCD,12,0.68,45,Desktop,Net Banking,135
+0048-ABCD,7,0.72,62,Tablet,Net Banking,145
+0049-ABCD,4,0.16,134,Mobile,UPI,128
+0050-ABCD,9,0.39,28,Mobile,Credit Card,33
