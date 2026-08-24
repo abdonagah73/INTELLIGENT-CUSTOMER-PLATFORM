@@ -9,15 +9,17 @@
     
     <style>
         :root {
-            --bg-dark: #0b1120;
-            --bg-card: #1e293b;
+            --bg-dark: #0a0f1d;
+            --bg-card: #172036;
             --bg-code: #0f172a;
-            --primary: #38bdf8;
+            --primary: #06b6d4;
+            --violet: #8b5cf6;
             --accent-green: #10b981;
             --accent-gold: #f59e0b;
+            --accent-rose: #f43f5e;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-glass: rgba(148, 163, 184, 0.18);
+            --border-glass: rgba(139, 92, 246, 0.25);
         }
 
         * {
@@ -27,7 +29,7 @@
         }
 
         body {
-            background: radial-gradient(1200px 600px at 15% -10%, #1e293b 0%, #0f172a 45%, #0b1120 100%);
+            background: radial-gradient(1200px 700px at 15% -10%, #172036 0%, #0f172a 50%, #0a0f1d 100%);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
@@ -36,30 +38,50 @@
             overflow: hidden;
         }
 
+        /* Top Progress Bar */
+        .progress-bar-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(23, 32, 54, 0.6);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 5%;
+            background: linear-gradient(90deg, #06b6d4, #8b5cf6, #10b981);
+            transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+        }
+
         /* Slide Viewport */
         .presentation-container {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 24px;
+            padding: 16px 20px;
             position: relative;
+            margin-top: 4px;
         }
 
         .slide {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.15);
+            background: linear-gradient(135deg, rgba(23, 32, 54, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(139, 92, 246, 0.15);
             border-radius: 24px;
             width: 100%;
-            max-width: 1200px;
-            height: 680px;
-            padding: 36px;
+            max-width: 1260px;
+            height: 720px;
+            padding: 28px 36px;
             display: none;
             flex-direction: column;
             position: relative;
             overflow-y: auto;
-            animation: fadeInSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeInSlide 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .slide.active {
@@ -67,28 +89,38 @@
         }
 
         @keyframes fadeInSlide {
-            from { opacity: 0; transform: translateY(15px) scale(0.98); }
+            from { opacity: 0; transform: translateY(18px) scale(0.97); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         /* Header Elements */
+        .slide-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
         .slide-tag {
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 1.5px;
             color: var(--primary);
             text-transform: uppercase;
-            margin-bottom: 6px;
+            background: rgba(6, 182, 212, 0.12);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
         }
 
         .slide-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+            background: linear-gradient(135deg, #ffffff 30%, #06b6d4 70%, #8b5cf6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 24px;
         }
 
         /* Title Slide Layout */
@@ -105,22 +137,22 @@
             font-weight: 800;
             color: #fff;
             margin-bottom: 12px;
+            line-height: 1.2;
         }
 
         .main-subtitle {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--text-muted);
-            margin-bottom: 36px;
-            direction: rtl;
-            text-align: right;
+            margin-bottom: 32px;
             line-height: 1.6;
         }
 
         .team-grid-card {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(139, 92, 246, 0.4);
             border-radius: 18px;
             padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .team-grid-title {
@@ -138,46 +170,51 @@
         }
 
         .team-pill {
-            background: rgba(30, 41, 59, 0.9);
+            background: rgba(23, 32, 54, 0.9);
             border: 1px solid var(--border-glass);
-            padding: 10px 16px;
-            border-radius: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
             font-size: 14px;
             font-weight: 600;
             color: #fff;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            transition: all 0.25s ease;
+        }
+
+        .team-pill:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.25);
         }
 
         .team-pill i {
             color: var(--primary);
         }
 
-        /* Two Column Layout (Description + Code) */
+        /* Two Column Layout */
         .two-col-layout {
             display: grid;
-            grid-template-columns: 1fr 1.25fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 24px;
             flex: 1;
         }
 
         .desc-card {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             border: 1px solid var(--border-glass);
             border-radius: 16px;
             padding: 20px;
             display: flex;
             flex-direction: column;
-            direction: rtl;
-            text-align: right;
         }
 
         .desc-title {
             color: var(--primary);
             font-size: 15px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -185,9 +222,9 @@
 
         .desc-text {
             font-size: 13px;
-            line-height: 1.7;
+            line-height: 1.6;
             color: #e2e8f0;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .points-title {
@@ -195,22 +232,19 @@
             font-size: 13px;
             font-weight: 700;
             margin-bottom: 8px;
-            direction: ltr;
-            text-align: left;
         }
 
         .points-list {
             list-style: none;
-            direction: ltr;
-            text-align: left;
         }
 
         .points-list li {
             font-size: 12px;
             color: var(--text-muted);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             position: relative;
-            padding-left: 16px;
+            padding-left: 18px;
+            line-height: 1.5;
         }
 
         .points-list li::before {
@@ -219,9 +253,10 @@
             font-weight: bold;
             position: absolute;
             left: 0;
+            font-size: 14px;
         }
 
-        /* Code Box */
+        /* Code & Image Container */
         .code-box {
             background: var(--bg-code);
             border: 1px solid rgba(245, 158, 11, 0.35);
@@ -230,6 +265,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            position: relative;
         }
 
         .code-header {
@@ -239,7 +275,7 @@
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
         }
 
         pre {
@@ -248,276 +284,832 @@
             line-height: 1.5;
             color: #f1f5f9;
             overflow-x: auto;
-            flex: 1;
             white-space: pre-wrap;
         }
 
-        /* Grid Metrics Layout */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-
-        .metric-card {
-            background: rgba(15, 23, 42, 0.7);
+        .image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.85);
             border: 1px solid var(--border-glass);
             border-radius: 16px;
-            padding: 20px;
+            overflow: hidden;
+            padding: 12px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            transition: transform 0.35s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Interactive Links List */
+        .link-card-grid {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 12px;
+            flex: 1;
         }
 
-        .metric-val {
-            font-family: 'Outfit', sans-serif;
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--primary);
+        .link-item-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 14px 18px;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        .metric-label {
+        .link-item-card:hover {
+            border-color: var(--primary);
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateX(4px);
+        }
+
+        .link-title {
             font-size: 14px;
             font-weight: 700;
             color: #fff;
-        }
-
-        .metric-desc {
-            font-size: 12px;
-            color: var(--text-muted);
-            direction: rtl;
-            text-align: right;
-        }
-
-        /* Control Footer Bar */
-        .controls-bar {
-            background: rgba(15, 23, 42, 0.9);
-            border-top: 1px solid var(--border-glass);
-            padding: 16px 36px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-btn {
-            background: rgba(30, 41, 59, 0.9);
-            border: 1px solid var(--border-glass);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s;
+        }
+
+        .link-url {
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            color: var(--accent-green);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .link-url:hover {
+            text-decoration: underline;
+            color: var(--primary);
+        }
+
+        .link-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Navigation Controls Bar */
+        .controls-bar {
+            height: 60px;
+            background: rgba(10, 15, 29, 0.95);
+            border-top: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 36px;
+            backdrop-filter: blur(12px);
+        }
+
+        .left-controls, .right-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: rgba(23, 32, 54, 0.9);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            padding: 8px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
         }
 
         .nav-btn:hover {
+            background: var(--primary);
+            color: #000;
             border-color: var(--primary);
-            background: rgba(56, 189, 248, 0.15);
+            box-shadow: 0 0 16px rgba(6, 182, 212, 0.5);
+        }
+
+        .icon-btn {
+            background: rgba(23, 32, 54, 0.9);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+
+        .icon-btn:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
         }
 
         .progress-indicator {
             font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(6, 182, 212, 0.12);
+            padding: 6px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(6, 182, 212, 0.25);
+        }
+
+        /* Slide Index Drawer Overlay */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 15, 29, 0.88);
+            backdrop-filter: blur(14px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInOverlay 0.3s ease;
+        }
+
+        .drawer-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .drawer-content {
+            background: rgba(23, 32, 54, 0.96);
+            border: 1px solid var(--violet);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            border-radius: 24px;
+            width: 92%;
+            max-width: 950px;
+            max-height: 82vh;
+            padding: 28px;
+            overflow-y: auto;
+        }
+
+        .drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 12px;
+        }
+
+        .drawer-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .drawer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .drawer-card {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .drawer-card:hover {
+            border-color: var(--primary);
+            background: rgba(6, 182, 212, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .drawer-card-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .drawer-card-title {
+            font-size: 13px;
             font-weight: 600;
-            color: var(--text-muted);
+            color: #fff;
         }
     </style>
 </head>
 <body>
 
-    <div class="presentation-container">
+    <!-- Top Progress Bar -->
+    <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
 
+    <!-- Slide Viewport -->
+    <div class="presentation-container">
+        
         <!-- SLIDE 1: Title Slide -->
         <div class="slide active">
             <div class="title-slide-content">
-                <div class="slide-tag">AI COURSE TECHNICAL PRESENTATION</div>
+                <div style="margin-bottom: 12px;">
+                    <span class="slide-tag"><i class="fa-solid fa-graduation-cap"></i> ARTIFICIAL INTELLIGENCE COURSE PROJECT</span>
+                </div>
                 <h1 class="main-hero-title">Intelligent Customer Retention Platform</h1>
-                <p class="main-subtitle">مشروع الذكاء الاصطناعي الهندسي - شرح المعمارية والكود البرمجي (Predictive ML • SHAP XAI • FAISS RAG • MLOps)</p>
-                
+                <div class="main-subtitle">
+                    End-to-End Enterprise AI System Architecture: Predictive ML (XGBoost) • Explainable AI (SHAP) • Retrieval-Augmented Generation (RAG) • Serving Microservice • RLHF MLOps Loop
+                </div>
+
                 <div class="team-grid-card">
-                    <div class="team-grid-title"><i class="fa-solid fa-users"></i> Project Team Members (فريق العمل):</div>
+                    <div class="team-grid-title"><i class="fa-solid fa-users"></i> Project Team Members:</div>
                     <div class="team-members-flex">
-                        <div class="team-pill"><i class="fa-solid fa-user-graduate"></i> Abdelrahman Mohamed Nagah</div>
-                        <div class="team-pill"><i class="fa-solid fa-user-graduate"></i> Ahmed Adel Abdelaziz</div>
-                        <div class="team-pill"><i class="fa-solid fa-user-graduate"></i> Ahmed Waled Abdel-Satar</div>
-                        <div class="team-pill"><i class="fa-solid fa-user-graduate"></i> Adham Maged Mohamed</div>
+                        <div class="team-pill"><i class="fa-solid fa-user-check"></i> 1. Abdelrahman Mohamed Nagah</div>
+                        <div class="team-pill"><i class="fa-solid fa-user-check"></i> 2. Ahmed Adel Abdelaziz</div>
+                        <div class="team-pill"><i class="fa-solid fa-user-check"></i> 3. Ahmed Waled Abdel-Satar</div>
+                        <div class="team-pill"><i class="fa-solid fa-user-check"></i> 4. Adham Maged Mohamed</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 2: Architecture & Tech Stack -->
+        <!-- SLIDE 2: Core Platform Concept & How It Works -->
         <div class="slide">
-            <div class="slide-tag">SYSTEM ARCHITECTURE</div>
-            <h2 class="slide-title">1. System Architecture & Tech Stack (معمارية النظام)</h2>
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-val" style="color: #38bdf8;">XGBoost + Optuna</div>
-                    <div class="metric-label">Predictive ML Engine</div>
-                    <div class="metric-desc">توقع نسبة مغادرة العملاء بدقة عالية مع ضبط المتغيرات الفائقة تلقائياً.</div>
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">PLATFORM OVERVIEW</span>
+                    <h2 class="slide-title">1. Core Idea & How The Platform Works</h2>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-val" style="color: #10b981;">SHAP TreeExplainer</div>
-                    <div class="metric-label">Explainable AI (XAI)</div>
-                    <div class="metric-desc">استخراج أهم 3 عوامل خطورة تؤثر على قرار العميل بشفافية تامة.</div>
+            </div>
+            <div class="link-card-grid">
+                <div class="link-item-card">
+                    <div class="link-title"><i class="fa-solid fa-1"></i> 1. Multi-Modal Data Ingestion & LLM Feature Mining</div>
+                    <div class="link-desc">Ingests raw demographic & customer support ticket text; processes text via HuggingFace RoBERTa to extract sentiment scores, urgency levels, manager escalation flags, and complaint topic vectors.</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-val" style="color: #f59e0b;">FAISS + LangChain</div>
-                    <div class="metric-label">RAG Briefing System</div>
-                    <div class="metric-desc">البحث المتجهي لتوليد توصيات استبقاء مخصصة لموظفي الخدمة.</div>
+                <div class="link-item-card">
+                    <div class="link-title"><i class="fa-solid fa-2"></i> 2. Balanced XGBoost Churn Risk Scoring</div>
+                    <div class="link-desc">Pipes tabular & behavioral features into an XGBoost Classifier tuned via SMOTE synthetic oversampling & Optuna to compute calibrated individual customer churn risk probabilities.</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-val" style="color: #ec4899;">FastAPI + MLOps</div>
-                    <div class="metric-label">Serving & RLHF Loop</div>
-                    <div class="metric-desc">سيرفر API عالي الأداء مع التعلّم المستمر وإعادة التدريب التلقائي.</div>
+                <div class="link-item-card">
+                    <div class="link-title"><i class="fa-solid fa-3"></i> 3. SHAP Explainable AI (XAI) Risk Driver Extraction</div>
+                    <div class="link-desc">Calculates exact Shapley Additive exPlanations to extract the Top-3 key risk drivers per customer (e.g. Month-to-Month Contract, High Monthly Charges, Short Tenure).</div>
+                </div>
+                <div class="link-item-card">
+                    <div class="link-title"><i class="fa-solid fa-4"></i> 4. RAG Vector Search & Tailored Agent Briefings</div>
+                    <div class="link-desc">Queries FAISS vector database index using sentence embeddings to retrieve empirical playbooks and synthesize actionable retention briefings for call center agents.</div>
+                </div>
+                <div class="link-item-card">
+                    <div class="link-title"><i class="fa-solid fa-5"></i> 5. Closed-Loop MLOps & RLHF Sample Reweighting</div>
+                    <div class="link-desc">Logs human agent call intervention outcomes into SQLite database (rlhf_outcomes.db), reweighting sample training weights (2.0x for retained, 0.5x for churned) for continuous automated retraining.</div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 3: ETL & Feature Store -->
+        <!-- SLIDE 3 (MOVED EARLY): Custom Code Functions Distribution & Module Architecture -->
         <div class="slide">
-            <div class="slide-tag">STEP 1 - DATA PIPELINE</div>
-            <h2 class="slide-title">2. Feature Engineering & Preprocessing (معالجة البيانات)</h2>
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">CODE ARCHITECTURE & MODULES</span>
+                    <h2 class="slide-title">2. Codebase Architecture & Custom Function Distribution</h2>
+                </div>
+            </div>
+            <div class="link-card-grid">
+                <div class="link-item-card" style="border-left: 4px solid var(--primary);">
+                    <div class="link-title" style="color: var(--primary);"><i class="fa-solid fa-folder-tree"></i> 1. Data Ingestion & LLM Layer (src/data/)</div>
+                    <div class="link-desc">Contains <code style="color:var(--accent-gold)">clean_and_validate_*()</code> in <code style="color:var(--accent-green)">validate_schema.py</code> for schema contract validation, <code style="color:var(--accent-gold)">run_etl_pipeline()</code> in <code style="color:var(--accent-green)">etl_pipeline.py</code> for merging & feature store Parquet snapshotting, and <code style="color:var(--accent-gold)">LLMExtractor.process_dataframe()</code> in <code style="color:var(--accent-green)">llm_extractor.py</code> for RoBERTa NLP ticket mining.</div>
+                </div>
+                <div class="link-item-card" style="border-left: 4px solid var(--violet);">
+                    <div class="link-title" style="color: var(--violet);"><i class="fa-solid fa-brain"></i> 2. Predictive Modeling & Optimization Layer (src/models/)</div>
+                    <div class="link-desc">Contains <code style="color:var(--accent-gold)">run_optuna_tuning()</code>, <code style="color:var(--accent-gold)">tune_business_threshold()</code>, and <code style="color:var(--accent-gold)">generate_shap_visualizations()</code> in <code style="color:var(--accent-green)">train_xgboost.py</code>, plus Random Forest & Gradient Boosting baseline evaluation models.</div>
+                </div>
+                <div class="link-item-card" style="border-left: 4px solid var(--accent-green);">
+                    <div class="link-title" style="color: var(--accent-green);"><i class="fa-solid fa-robot"></i> 3. Generative AI & Vector Search Layer (src/RAG/)</div>
+                    <div class="link-desc">Contains <code style="color:var(--accent-gold)">build_faiss_index()</code> in <code style="color:var(--accent-green)">build_vector_db.py</code> and <code style="color:var(--accent-gold)">RAGPipeline.generate_briefing()</code> in <code style="color:var(--accent-green)">rag_pipeline.py</code> using HuggingFace sentence-transformers and FAISS cosine similarity.</div>
+                </div>
+                <div class="link-item-card" style="border-left: 4px solid var(--accent-gold);">
+                    <div class="link-title" style="color: var(--accent-gold);"><i class="fa-solid fa-server"></i> 4. FastAPI REST Serving Layer (src/serving/)</div>
+                    <div class="link-desc">Contains <code style="color:var(--accent-gold)">preprocess_single_customer()</code>, <code style="color:var(--accent-gold)">get_top_shap_drivers()</code>, and <code style="color:var(--accent-gold)">predict_churn()</code> route handler in <code style="color:var(--accent-green)">main.py</code> powered by FastAPI and Pydantic v2.</div>
+                </div>
+                <div class="link-item-card" style="border-left: 4px solid var(--accent-rose);">
+                    <div class="link-title" style="color: var(--accent-rose);"><i class="fa-solid fa-arrows-rotate"></i> 5. Continuous MLOps & Hybrid Web Layer (src/mlops/ & web/)</div>
+                    <div class="link-desc">Contains <code style="color:var(--accent-gold)">compute_sample_weights()</code> in <code style="color:var(--accent-green)">rlhf_reweighter.py</code>, <code style="color:var(--accent-gold)">check_data_drift()</code> in <code style="color:var(--accent-green)">drift_monitor.py</code>, and standalone client-side JS fallback inference scorer in <code style="color:var(--accent-green)">index.html</code>.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Architecture Minimal Diagram -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">SYSTEM DESIGN & PIPELINE</span>
+                    <h2 class="slide-title">3. Multi-Agent System Architecture Flow</h2>
+                </div>
+            </div>
             <div class="two-col-layout">
                 <div class="desc-card">
-                    <div class="desc-title"><i class="fa-solid fa-gears"></i> الشرح وتدفق البيانات:</div>
-                    <div class="desc-text">يقوم هذا الجزء بتحويل البيانات الخام إلى مصفوفات رقمية متوافقة مع نموذج XGBoost عبر استخدام StandardScaler للأرقام و OneHotEncoder للنصوص مع تحويل كل الأعمدة لـ float لمنع أخطاء Types.</div>
+                    <div class="desc-title"><i class="fa-solid fa-sitemap"></i> System Concept Breakdown:</div>
+                    <div class="desc-text">An integrated multi-agent pipeline uniting tabular machine learning with unstructured NLP, model explainability, vector database retrieval, REST API microservices, and continuous reinforcement learning.</div>
+                    <div class="points-title">Key Architectural Highlights:</div>
+                    <ul class="points-list">
+                        <li>Predictive ML: XGBoost Classifier delivers calibrated churn probabilities.</li>
+                        <li>Explainable AI: SHAP TreeExplainer derives microsecond feature attributions.</li>
+                        <li>RAG Vector Search: FAISS vector database matches empirical retention strategies.</li>
+                        <li>MLOps Feedback: SQLite RLHF database logs human agent outcomes to update weights.</li>
+                    </ul>
+                </div>
+                <div class="image-container">
+                    <img src="docs/images/simple_arch.jpg" alt="Minimal Architecture Diagram">
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Interactive Kaggle Sources & Datasets -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">DATA SOURCES & KAGGLE LINKS</span>
+                    <h2 class="slide-title">4. Primary Datasets & Interactive Kaggle Sources</h2>
+                </div>
+            </div>
+            <div class="link-card-grid">
+                <div class="link-item-card">
+                    <div class="link-title"><i class="fa-solid fa-database"></i> IBM Telco Customer Churn Dataset (Kaggle)</div>
+                    <a href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn" target="_blank" class="link-url">https://www.kaggle.com/datasets/blastchar/telco-customer-churn</a>
+                    <div class="link-desc">Primary dataset containing 7,043 customer records with 21 demographic & subscription attributes (tenure, contract type, paperless billing, monthly charges).</div>
+                </div>
+                <div class="link-item-card">
+                    <div class="link-title"><i class="fa-solid fa-building-columns"></i> Bank Customer Churn Dataset (Kaggle)</div>
+                    <a href="https://www.kaggle.com/datasets/adammaus/predicting-churn-for-bank-customers" target="_blank" class="link-url">https://www.kaggle.com/datasets/adammaus/predicting-churn-for-bank-customers</a>
+                    <div class="link-desc">Enrichment dataset with 10,000 banking customer records used for cross-domain financial feature engineering (Credit Score, Balance, Estimated Salary).</div>
+                </div>
+                <div class="link-item-card">
+                    <div class="link-title"><i class="fa-solid fa-headset"></i> Customer Support Tickets Dataset (Kaggle)</div>
+                    <a href="https://www.kaggle.com/datasets/suraj520/customer-support-ticket-dataset" target="_blank" class="link-url">https://www.kaggle.com/datasets/suraj520/customer-support-ticket-dataset</a>
+                    <div class="link-desc">Unstructured support ticket text logs processed via LLM sentiment transformers & complaint topic modeling.</div>
+                </div>
+                <div class="link-item-card">
+                    <div class="link-title"><i class="fa-solid fa-chart-line"></i> Synthetic Real-Time Streaming & Market Signals</div>
+                    <span class="link-url">Local Feature Store (data/feature_store/)</span>
+                    <div class="link-desc">Simulated real-time features (7d/30d login rolling averages, Trustpilot sentiment, competitor price competitiveness ratios).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Data Ingestion & Quality Validation -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">STEP 1 - DATA QUALITY & INGESTION</span>
+                    <h2 class="slide-title">5. Data Ingestion & Strict Quality Validation</h2>
+                </div>
+            </div>
+            <div class="two-col-layout">
+                <div class="desc-card">
+                    <div class="desc-title"><i class="fa-solid fa-shield-halved"></i> Workflow & System Functionality:</div>
+                    <div class="desc-text">Enforces strict data quality controls using JSON Schema validation contracts, checking null ratios, verifying non-zero feature variance, and screening for target leakage prior to feature store merging.</div>
                     <div class="points-title">Key Implementation Points:</div>
                     <ul class="points-list">
-                        <li>StandardScaler standardizes numerical ranges.</li>
-                        <li>OneHotEncoder expands categorical options into binary columns.</li>
-                        <li>reindex(columns=feature_names) enforces column contract.</li>
-                        <li>astype(float) prevents XGBoost object-type mismatch crashes.</li>
+                        <li>JSON Schema Contracts guarantee structural type consistency across raw datasets.</li>
+                        <li>Automatic handling of corrupted string values (e.g. whitespace in TotalCharges).</li>
+                        <li>Fail-Fast Data Quality checks fail the pipeline if null rates exceed 5%.</li>
+                        <li>Target Leakage screening screens out features exhibiting correlation > 0.95 with target.</li>
                     </ul>
                 </div>
                 <div class="code-box">
-                    <div class="code-header"><i class="fa-solid fa-code"></i> Python (preprocess_single_customer):</div>
-                    <pre># Convert Yes/No strings to binary integers
-yes_no_cols = ["Partner", "Dependents", "PhoneService"]
-for col in yes_no_cols:
-    if col in cust_df.columns:
-        cust_df[col] = cust_df[col].replace({"Yes": 1, "No": 0})
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (validate_schema.py)</span>
+                    </div>
+                    <pre>def clean_and_validate_telco(df, schema_path):
+    # 1. Coerce TotalCharges to numeric, handling space strings
+    df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce").fillna(0.0)
+    
+    # 2. Schema Contract Validation
+    with open(schema_path, "r") as f:
+        schema = json.load(f)
+    validate(instance=df.to_dict(orient="records"), schema=schema)
+    
+    # 3. Fail-Fast Data Quality Assertions
+    null_rates = df.isnull().mean()
+    if (null_rates > 0.05).any():
+        raise ValueError("Data Quality Error: Column contains >5% null values.")
+        
+    return df</pre>
+                </div>
+            </div>
+        </div>
 
-# 1. Scale Numerical Features
+        <!-- SLIDE 7: Feature Store Preprocessing & Alignment -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">STEP 2 - FEATURE ENGINEERING</span>
+                    <h2 class="slide-title">6. Feature Store Preprocessing & Contract Alignment</h2>
+                </div>
+            </div>
+            <div class="two-col-layout">
+                <div class="desc-card">
+                    <div class="desc-title"><i class="fa-solid fa-sliders"></i> Workflow & System Functionality:</div>
+                    <div class="desc-text">Standardizes numerical ranges using StandardScaler and expands categoricals via OneHotEncoder, fitting transformers exclusively on the training split to eliminate data leakage risks during production inference.</div>
+                    <div class="points-title">Key Implementation Points:</div>
+                    <ul class="points-list">
+                        <li>StandardScaler fits strictly on training split to prevent evaluation data leakage.</li>
+                        <li>OneHotEncoder handle_unknown='ignore' safely processes novel categories.</li>
+                        <li>reindex(columns=feature_names) enforces rigid column index contract.</li>
+                        <li>astype(float) prevents XGBoost C++ matrix typing mismatch exceptions.</li>
+                    </ul>
+                </div>
+                <div class="code-box">
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (etl_pipeline.py)</span>
+                    </div>
+                    <pre># Fit transformers strictly on training split
+scaler = StandardScaler()
+scaler.fit(train_df[numerical_cols])
+
+encoder = OneHotEncoder(handle_unknown="ignore", sparse_output=False)
+encoder.fit(train_df[categorical_cols])
+
+# Production inference transformation & float casting
 scaled_nums = scaler.transform(cust_df[numerical_cols])
-scaled_num_df = pd.DataFrame(scaled_nums, columns=numerical_cols)
-
-# 2. One-Hot Encode Categorical Features
 encoded_cats = encoder.transform(cust_df[categorical_cols])
-encoded_cat_df = pd.DataFrame(encoded_cats, columns=encoder.get_feature_names_out())
 
-# 3. Concatenate and cast all columns to numeric float
-X_cust = pd.concat([scaled_num_df, encoded_cat_df, df_other], axis=1)
+X_cust = pd.concat([pd.DataFrame(scaled_nums), pd.DataFrame(encoded_cats)], axis=1)
 X_cust = X_cust.reindex(columns=feature_names, fill_value=0)
 X_cust = X_cust.apply(pd.to_numeric, errors="coerce").fillna(0.0).astype(float)</pre>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 4: Predictive Machine Learning -->
+        <!-- SLIDE 8: Unstructured Ticket LLM Extraction -->
         <div class="slide">
-            <div class="slide-tag">STEP 2 - MODEL TRAINING</div>
-            <h2 class="slide-title">3. Predictive Machine Learning (XGBoost Training)</h2>
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">STEP 3 - NLP & LLM TEXT MINING</span>
+                    <h2 class="slide-title">7. Support Ticket Analysis via LLM Feature Extraction</h2>
+                </div>
+            </div>
             <div class="two-col-layout">
                 <div class="desc-card">
-                    <div class="desc-title"><i class="fa-solid fa-chart-line"></i> الشرح وتدفق البيانات:</div>
-                    <div class="desc-text">تم تدريب نموذج XGBoost Classifier مع ضبط المتغيرات الفائقة عبر مكتبة Optuna لتحقيق أعلى معدل استدعاء (Recall=99.47%) وحساب احتمال المغادرة (Churn Score).</div>
+                    <div class="desc-title"><i class="fa-solid fa-brain"></i> Workflow & System Functionality:</div>
+                    <div class="desc-text">Transforms unstructured customer support tickets into quantitative behavioral feature vectors using HuggingFace RoBERTa sentiment analysis pipelines, extracting sentiment scores, urgency levels, and complaint topics.</div>
                     <div class="points-title">Key Implementation Points:</div>
                     <ul class="points-list">
-                        <li>Optuna automates hyperparameter tuning over 100 trials.</li>
-                        <li>Cost-sensitive threshold (0.16/0.32) maximizes financial ROI.</li>
-                        <li>predict_proba returns calibrated probability of customer churn.</li>
-                        <li>Confidence metric represents distance from optimal threshold.</li>
+                        <li>RoBERTa neural model calculates continuous sentiment scores (-1.0 negative to +1.0 positive).</li>
+                        <li>Classifies urgency level (low, medium, high, critical) and manager escalation flags.</li>
+                        <li>Parses complaint topic domain tags (billing disputes, competitor offers, network quality).</li>
+                        <li>Aggregates ticket features per customer into multi-modal Parquet snapshots.</li>
                     </ul>
                 </div>
                 <div class="code-box">
-                    <div class="code-header"><i class="fa-solid fa-code"></i> Python (train_xgboost.py):</div>
-                    <pre>import xgboost as xgb
-import optuna
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (llm_extractor.py)</span>
+                    </div>
+                    <pre>from transformers import pipeline
 
-def objective(trial):
-    params = {
-        'n_estimators': trial.suggest_int('n_estimators', 100, 500),
-        'max_depth': trial.suggest_int('max_depth', 3, 9),
-        'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.2),
-        'subsample': trial.suggest_float('subsample', 0.6, 1.0)
-    }
-    model = xgb.XGBClassifier(**params, random_state=42)
-    model.fit(X_train, y_train)
-    preds = model.predict_proba(X_val)[:, 1]
-    return roc_auc_score(y_val, preds)
-
-# Inference execution in FastAPI
-prob = float(model.predict_proba(X_cust)[0, 1])
-confidence = min(1.0, max(0.0, float(np.abs(prob - optimal_threshold) * 2.0)))</pre>
+class LLMExtractor:
+    def __init__(self):
+        # HuggingFace RoBERTa Sentiment Pipeline
+        self.sentiment_pipe = pipeline(
+            "sentiment-analysis", 
+            model="cardiffnlp/twitter-roberta-base-sentiment-latest"
+        )
+        
+    def process_dataframe(self, df, text_col):
+        df["sentiment_score"] = df[text_col].apply(self._calc_sentiment)
+        df["urgency_level"] = df[text_col].apply(self._detect_urgency)
+        df["complaint_topics"] = df[text_col].apply(self._extract_topics)
+        df["escalation_flag"] = df["urgency_level"].apply(lambda u: 1 if u in ["high", "critical"] else 0)
+        return df</pre>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 5: SHAP Explainability -->
+        <!-- SLIDE 9: Deep Dive: Class Imbalance Minimal Visual -->
         <div class="slide">
-            <div class="slide-tag">STEP 3 - EXPLAINABLE AI</div>
-            <h2 class="slide-title">4. Explainable AI with SHAP (تفسير التوقعات مع SHAP)</h2>
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">CORE CHALLENGE - DATA IMBALANCE</span>
+                    <h2 class="slide-title">8. Deep Dive: The Core Data Imbalance Problem</h2>
+                </div>
+            </div>
             <div class="two-col-layout">
                 <div class="desc-card">
-                    <div class="desc-title"><i class="fa-solid fa-eye"></i> الشرح وتدفق البيانات:</div>
-                    <div class="desc-text">لضمان الشفافية، يتم استخدام SHAP TreeExplainer لحساب قيم Shapley لكل خاصية، واستخراج أهم 3 عوامل خطورة تؤثر على قرار العميل بشكل مباشر.</div>
+                    <div class="desc-title"><i class="fa-solid fa-scale-unbalanced"></i> Problem Statement:</div>
+                    <div class="desc-text">Customer retention datasets naturally suffer from severe class imbalance: ~73.5% of customers Complete/Stay (Churn=0), while only ~26.5% Don't Complete/Leave (Churn=1). Standard machine learning algorithms fail on imbalanced data because they bias heavily toward predicting the majority class.</div>
+                    <div class="points-title">Key Analytical Insights:</div>
+                    <ul class="points-list">
+                        <li>Raw Class Ratio: 5,174 Retained (73.5%) vs 1,869 Churned (26.5%).</li>
+                        <li>The Problem: People who complete tenure heavily outweigh people who don't complete, causing standard models to predict everyone stays.</li>
+                        <li>Goal: Rebalance the dataset so minority churners are detected with near-100% recall.</li>
+                        <li>Solution: SMOTE synthetic oversampling + cost-sensitive decision threshold optimization.</li>
+                    </ul>
+                </div>
+                <div class="image-container">
+                    <img src="docs/images/simple_imbalance.jpg" alt="Minimal Class Imbalance Diagram">
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: Why Traditional ML Fails: Accuracy Paradox -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">CORE CHALLENGE - THEORY & MATH</span>
+                    <h2 class="slide-title">9. Why Traditional ML Fails: The Accuracy Paradox</h2>
+                </div>
+            </div>
+            <div class="link-card-grid">
+                <div class="link-item-card" style="border-left: 4px solid var(--accent-rose);">
+                    <div class="link-title" style="color: var(--accent-rose);"><i class="fa-solid fa-triangle-exclamation"></i> 1. The Naive Classifier Trap</div>
+                    <div class="link-desc">If a model simply predicts 'Retained' (Churn=0) for 100% of customers, it achieves 73.5% Accuracy without doing any actual machine learning! However, its Recall for churners is 0.0%.</div>
+                </div>
+                <div class="link-item-card" style="border-left: 4px solid var(--accent-gold);">
+                    <div class="link-title" style="color: var(--accent-gold);"><i class="fa-solid fa-coins"></i> 2. Financial Asymmetry of Errors</div>
+                    <div class="link-desc">A False Positive (FP: offer given to someone staying) costs $50 in retention discount. A False Negative (FN: missed churner leaving) costs $1,680 in lost Customer Lifetime Value (LTV). FN error is 33.6x more expensive than FP error!</div>
+                </div>
+                <div class="link-item-card" style="border-left: 4px solid var(--violet);">
+                    <div class="link-title" style="color: var(--violet);"><i class="fa-solid fa-sliders"></i> 3. Standard 0.50 Threshold Failure</div>
+                    <div class="link-desc">Standard binary classifiers optimize for symmetric error (0.50 threshold), which treats FN and FP as equal cost. This leads to massive revenue loss in real enterprise environments.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: 4-Tier Solution for Class Imbalance -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">CORE CHALLENGE - IMBALANCE RESOLUTION</span>
+                    <h2 class="slide-title">10. 4-Tier Engineering Solution for Class Imbalance</h2>
+                </div>
+            </div>
+            <div class="two-col-layout">
+                <div class="desc-card">
+                    <div class="desc-title"><i class="fa-solid fa-diagram-project"></i> Engineering Resolution Strategy:</div>
+                    <div class="desc-text">To guarantee high sensitivity for the minority non-completer class, we implemented a 4-tier engineering strategy: SMOTE synthetic over-sampling, XGBoost scale_pos_weight, cost-sensitive threshold tuning, and Stratified K-Fold validation.</div>
                     <div class="points-title">Key Implementation Points:</div>
                     <ul class="points-list">
-                        <li>Shapley Values measure marginal contribution of each feature.</li>
-                        <li>TreeExplainer provides fast, exact SHAP computation for XGBoost.</li>
-                        <li>argsort(np.abs(vals)) ranks features by impact magnitude.</li>
-                        <li>Returns human-interpretable risk drivers (#1 tenure, #2 Contract).</li>
+                        <li>1. SMOTE (Synthetic Minority Over-sampling): Synthetically balances training split to 50/50 without data leakage.</li>
+                        <li>2. XGBoost scale_pos_weight: Optuna tuned parameter (1.0 to 5.0) placing extra penalty on misclassifying churners.</li>
+                        <li>3. Stratified K-Fold CV: Guarantees exact 73.5/26.5 class proportions across all cross-validation folds.</li>
+                        <li>4. Cost-Sensitive Threshold Optimization: Adjusts decision boundary to minimize total financial business loss.</li>
                     </ul>
                 </div>
                 <div class="code-box">
-                    <div class="code-header"><i class="fa-solid fa-code"></i> Python (SHAP Drivers):</div>
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (train_xgboost.py)</span>
+                    </div>
+                    <pre>from imblearn.over_sampling import SMOTE
+import xgboost as xgb
+
+# 1. Apply SMOTE to Training Split ONLY (prevents evaluation leakage)
+smote = SMOTE(random_state=42)
+X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
+
+# 2. XGBoost with Optuna Tuned scale_pos_weight
+model = xgb.XGBClassifier(scale_pos_weight=3.2, random_state=42)
+model.fit(X_train_res, y_train_res)
+
+# 3. Stratified K-Fold CV preserving class ratios
+cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: Cost Matrix Optimization & Business Threshold -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">BUSINESS UTILITY & DECISION OPTIMIZATION</span>
+                    <h2 class="slide-title">11. Cost Matrix Optimization & Optimal Business Threshold</h2>
+                </div>
+            </div>
+            <div class="two-col-layout">
+                <div class="desc-card">
+                    <div class="desc-title"><i class="fa-solid fa-calculator"></i> Decision Optimization Concept:</div>
+                    <div class="desc-text">Standard machine learning uses a 0.50 probability threshold, which treats false positive and false negative errors equally. We formulated a cost-minimization function factoring in Customer Lifetime Value (LTV = $1,680) versus Retention Offer Cost ($50).</div>
+                    <div class="points-title">Key Business Outcomes:</div>
+                    <ul class="points-list">
+                        <li>FN Loss ($1,680 LTV) is 33.6x more costly than FP Loss ($50 intervention offer).</li>
+                        <li>Business cost curve reaches global minimum at threshold of 0.16 / 0.32.</li>
+                        <li>Shifting threshold down captures 99.47% of at-risk non-completers (Recall).</li>
+                        <li>Saves an estimated $4.15 Million in net retention revenue for enterprise operations.</li>
+                    </ul>
+                </div>
+                <div class="code-box">
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (train_xgboost.py)</span>
+                    </div>
+                    <pre>def tune_business_threshold(y_true, y_probs, ltv=1680, cost_fp=50):
+    # Total Business Cost = (FN * LTV) + (FP * Cost_FP)
+    # FN (False Negative) = Missed Churner (Loss of $1,680 LTV)
+    # FP (False Positive) = Unnecessary Retention Offer (Loss of $50)
+    
+    thresholds = np.arange(0.10, 0.90, 0.01)
+    best_threshold = 0.50
+    min_cost = float('inf')
+    
+    for t in thresholds:
+        preds = (y_probs >= t).astype(int)
+        tn, fp, fn, tp = confusion_matrix(y_true, preds).ravel()
+        total_cost = (fn * ltv) + (fp * cost_fp)
+        if total_cost < min_cost:
+            min_cost = total_cost
+            best_threshold = t
+            
+    return best_threshold, min_cost  # Returns optimal threshold (0.16 / 0.32)</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: Predictive Machine Learning with XGBoost & Optuna -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">STEP 4 - PREDICTIVE MODELING</span>
+                    <h2 class="slide-title">12. XGBoost Classifier & Optuna Hyperparameter Tuning</h2>
+                </div>
+            </div>
+            <div class="two-col-layout">
+                <div class="desc-card">
+                    <div class="desc-title"><i class="fa-solid fa-sliders"></i> Workflow & System Functionality:</div>
+                    <div class="desc-text">Automates hyperparameter search over 30 trials using Optuna's Tree-structured Parzen Estimator (TPE) algorithm, optimizing n_estimators, max_depth, learning_rate, subsample, and scale_pos_weight.</div>
+                    <div class="points-title">Key Implementation Points:</div>
+                    <ul class="points-list">
+                        <li>Optuna TPE algorithm intelligently explores hyperparameter space.</li>
+                        <li>Maximizes Precision-Recall AUC on validation folds during tuning.</li>
+                        <li>Produces calibrated probability scores outputted by model.predict_proba.</li>
+                        <li>Achieved test set ROC-AUC of 0.8317.</li>
+                    </ul>
+                </div>
+                <div class="code-box">
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (train_xgboost.py)</span>
+                    </div>
+                    <pre>import optuna
+
+def objective(trial):
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 300),
+        'max_depth': trial.suggest_int('max_depth', 3, 8),
+        'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.2, log=True),
+        'subsample': trial.suggest_float('subsample', 0.6, 1.0),
+        'scale_pos_weight': trial.suggest_float('scale_pos_weight', 1.0, 5.0)
+    }
+    model = xgb.XGBClassifier(**params, random_state=42)
+    model.fit(X_tr_res, y_tr_res)
+    probs = model.predict_proba(X_val)[:, 1]
+    return auc(recall, precision)
+
+study = optuna.create_study(direction="maximize")
+study.optimize(objective, n_trials=30)</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 14: Model Benchmark Comparison -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">MODEL EVALUATION & SELECTION</span>
+                    <h2 class="slide-title">13. Multi-Model Benchmarking & Evaluation Metrics</h2>
+                </div>
+            </div>
+            <div class="two-col-layout">
+                <div class="desc-card">
+                    <div class="desc-title"><i class="fa-solid fa-chart-column"></i> Benchmark Evaluation Summary:</div>
+                    <div class="desc-text">Compares XGBoost Classifier performance against Random Forest and Gradient Boosting baselines across ROC-AUC, PR-AUC, At-Risk Recall, and Minimized Business Cost metrics.</div>
+                    <div class="points-title">Key Comparative Takeaways:</div>
+                    <ul class="points-list">
+                        <li>XGBoost outperforms Random Forest and Gradient Boosting across all key metrics.</li>
+                        <li>Achieves highest PR-AUC (0.6480) and superior discrimination capability.</li>
+                        <li>Captures 99.47% of at-risk churners under cost-optimized thresholding.</li>
+                        <li>Selected as the core inference model for production FastAPI deployment.</li>
+                    </ul>
+                </div>
+                <div class="code-box">
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Model Benchmark Matrix</span>
+                    </div>
+                    <pre># Model Evaluation Summary Comparison
+models_benchmark = {
+    "XGBoost Classifier (Tuned + SMOTE)": {
+        "ROC_AUC": 0.8317, 
+        "PR_AUC": 0.6480, 
+        "Recall@Optimal_T": 0.9947, 
+        "Net_ROI": "$4.15M"
+    },
+    "Random Forest Classifier": {
+        "ROC_AUC": 0.8120, 
+        "PR_AUC": 0.5910, 
+        "Recall@Optimal_T": 0.9120, 
+        "Net_ROI": "$3.20M"
+    },
+    "Gradient Boosting Classifier": {
+        "ROC_AUC": 0.8205, 
+        "PR_AUC": 0.6150, 
+        "Recall@Optimal_T": 0.9410, 
+        "Net_ROI": "$3.65M"
+    }
+}</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 15: Explainable AI with SHAP -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">STEP 5 - EXPLAINABLE AI (XAI)</span>
+                    <h2 class="slide-title">14. Model Interpretability using SHAP TreeExplainer</h2>
+                </div>
+            </div>
+            <div class="two-col-layout">
+                <div class="desc-card">
+                    <div class="desc-title"><i class="fa-solid fa-eye"></i> Workflow & System Functionality:</div>
+                    <div class="desc-text">Calculates exact Shapley Additive exPlanations for XGBoost predictions via SHAP TreeExplainer, providing game-theoretic feature attribution and ranking the Top-3 risk drivers for individual customer instances.</div>
+                    <div class="points-title">Key Implementation Points:</div>
+                    <ul class="points-list">
+                        <li>Shapley values provide mathematically proven fair feature attribution.</li>
+                        <li>TreeExplainer enables exact, microsecond SHAP computation for XGBoost ensembles.</li>
+                        <li>np.argsort(np.abs(shap_vals)) ranks features by absolute risk impact magnitude.</li>
+                        <li>Identifies exact risk drivers (e.g. #1 Short Tenure, #2 Month-to-Month Contract, #3 Lack of Tech Support).</li>
+                    </ul>
+                </div>
+                <div class="code-box">
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (main.py)</span>
+                    </div>
                     <pre>import shap
 
-# Initialize TreeExplainer on startup
 explainer = shap.TreeExplainer(model)
 
-# Calculate SHAP values for single customer vector
+# Compute Shapley values for single customer vector
 shap_raw = explainer.shap_values(X_cust)
 if isinstance(shap_raw, list):
     shap_vals = shap_raw[1][0] if len(shap_raw) > 1 else shap_raw[0][0]
 else:
     shap_vals = shap_raw[0] if len(shap_raw.shape) > 1 else shap_raw
 
-# Get top 3 absolute impact feature indices
+# Rank and extract top 3 absolute impact feature indices
 top_indices = np.argsort(np.abs(shap_vals))[::-1][:3]
 top_drivers = [feature_names[idx] for idx in top_indices]</pre>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 6: GenAI & RAG -->
+        <!-- SLIDE 16: Generative AI & RAG Engine -->
         <div class="slide">
-            <div class="slide-tag">STEP 4 - GENAI & RAG PIPELINE</div>
-            <h2 class="slide-title">5. Retrieval-Augmented Generation (توليد توصيات RAG)</h2>
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">STEP 6 - GENAI & RAG PIPELINE</span>
+                    <h2 class="slide-title">15. Retrieval-Augmented Generation for Retention Briefings</h2>
+                </div>
+            </div>
             <div class="two-col-layout">
                 <div class="desc-card">
-                    <div class="desc-title"><i class="fa-solid fa-robot"></i> الشرح وتدفق البيانات:</div>
-                    <div class="desc-text">عند تجاوز نسبة الخطر للحد المطلوب، يقوم محرك RAG بالبحث المتجهي في قاعدة بيانات FAISS عن أفضل استراتيجيات التوصية المقترحة وتوليد التقرير المخصص لموظف خدمة العملاء.</div>
+                    <div class="desc-title"><i class="fa-solid fa-robot"></i> Workflow & System Functionality:</div>
+                    <div class="desc-text">When customer churn risk exceeds the optimal threshold, the RAG engine performs vector similarity search in FAISS using sentence embeddings to retrieve empirical playbooks and synthesize tailored retention briefings.</div>
                     <div class="points-title">Key Implementation Points:</div>
                     <ul class="points-list">
-                        <li>HuggingFace sentence-transformers encodes strategies into 384-d vectors.</li>
-                        <li>FAISS executes ultra-fast cosine similarity search.</li>
-                        <li>Retrieves empirical playbook strategies matching customer profile.</li>
-                        <li>Combines SHAP drivers + retrieved context into actionable agent briefing.</li>
+                        <li>HuggingFace sentence-transformers (all-MiniLM-L6-v2) encodes strategies into 384-d vectors.</li>
+                        <li>FAISS Vector Index executes ultra-fast similarity search over empirical playbook knowledge.</li>
+                        <li>Retrieves empirical retention strategies matching customer contract & SHAP risk profile.</li>
+                        <li>Synthesizes SHAP risk drivers + retrieved context into actionable call center agent briefings.</li>
                     </ul>
                 </div>
                 <div class="code-box">
-                    <div class="code-header"><i class="fa-solid fa-code"></i> Python (rag_pipeline.py):</div>
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (rag_pipeline.py)</span>
+                    </div>
                     <pre>from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
 class RAGPipeline:
     def __init__(self):
+        # Initialize HuggingFace 384-d sentence transformer embeddings
         self.embeddings = HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
@@ -527,31 +1119,36 @@ class RAGPipeline:
         query = f"customer tenure {clean_dict.get('tenure')} months {clean_dict.get('Contract')} contract"
         docs = self.vector_db.similarity_search(query, k=2)
         retrieved_context = docs[0].page_content
-        
-        return f"This customer is at high risk due to {top_drivers}. Strategy: {retrieved_context}"</pre>
+        return f"High risk due to {top_drivers}. Strategy: {retrieved_context}"</pre>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 7: FastAPI Serving -->
+        <!-- SLIDE 17: Serving REST API Microservice -->
         <div class="slide">
-            <div class="slide-tag">STEP 5 - FASTAPI SERVING</div>
-            <h2 class="slide-title">6. Serving API & Pydantic Validation (بناء الـ API)</h2>
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">STEP 7 - FASTAPI SERVING API</span>
+                    <h2 class="slide-title">16. Asynchronous FastAPI Microservice & Schema Contracts</h2>
+                </div>
+            </div>
             <div class="two-col-layout">
                 <div class="desc-card">
-                    <div class="desc-title"><i class="fa-solid fa-server"></i> الشرح وتدفق البيانات:</div>
-                    <div class="desc-text">سيرفر FastAPI يوفر نقاط اتصال HTTP REST خفيفة وسريعة، مع استخدام Pydantic للتحقق من أنماط البيانات الواردة ودعم القيم الرقمية والنصية بحرية.</div>
+                    <div class="desc-title"><i class="fa-solid fa-server"></i> Workflow & System Functionality:</div>
+                    <div class="desc-text">Exposes lightweight, high-performance REST API endpoints with FastAPI. Uses Pydantic for flexible input type validation and embeds a client-side JS fallback engine for static GitHub Pages hosting.</div>
                     <div class="points-title">Key Implementation Points:</div>
                     <ul class="points-list">
-                        <li>Async ASGI architecture ensures high-concurrency request handling.</li>
-                        <li>Pydantic schema validates incoming JSON types flexibly.</li>
-                        <li>Automatic OpenAPI / Swagger documentation at /docs.</li>
-                        <li>Unified endpoint returning score, SHAP drivers, and RAG briefing.</li>
+                        <li>Asynchronous ASGI architecture ensures high-concurrency request processing.</li>
+                        <li>Pydantic schema validates incoming JSON request types flexibly.</li>
+                        <li>Automatic OpenAPI / Swagger documentation rendered at /docs.</li>
+                        <li>Includes client-side JS inference engine for static GitHub Pages fallback.</li>
                     </ul>
                 </div>
                 <div class="code-box">
-                    <div class="code-header"><i class="fa-solid fa-code"></i> Python (main.py):</div>
-                    <pre>from fastapi import FastAPI, HTTPException
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (main.py)</span>
+                    </div>
+                    <pre>from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional, Union
 
@@ -574,61 +1171,30 @@ def predict_churn(request: PredictRequest):
             </div>
         </div>
 
-        <!-- SLIDE 8: MLOps & RLHF -->
+        <!-- SLIDE 18: Standalone Web UI & Client Fallback Scorer -->
         <div class="slide">
-            <div class="slide-tag">STEP 6 - MLOPS & RLHF TRACKING</div>
-            <h2 class="slide-title">7. Closed-Loop MLOps & RLHF Tracking (التعلّم المستمر)</h2>
-            <div class="two-col-layout">
-                <div class="desc-card">
-                    <div class="desc-title"><i class="fa-solid fa-rotate"></i> الشرح وتدفق البيانات:</div>
-                    <div class="desc-text">يتم تسجيل نتائج تفاعل موظفي خدمة العملاء (Retained / Churned) في قاعدة بيانات rlhf_outcomes.db، ثم حساب أوزان العينات (Sample Weights) لإعادة التدريب التلقائي وتطوير النموذج مع الوقت.</div>
-                    <div class="points-title">Key Implementation Points:</div>
-                    <ul class="points-list">
-                        <li>RLHF: Reinforcement Learning from Human Feedback.</li>
-                        <li>Outcome=1 (Retained) receives 2.0x weight during retrain.</li>
-                        <li>Outcome=0 (Churned) receives 0.5x weight to adjust boundaries.</li>
-                        <li>Continuous automated retraining pipeline ensures non-decaying precision.</li>
-                    </ul>
-                </div>
-                <div class="code-box">
-                    <div class="code-header"><i class="fa-solid fa-code"></i> Python (rlhf_reweighter.py):</div>
-                    <pre>def compute_sample_weights(customer_ids, db_path="data/rlhf_outcomes.db"):
-    weights = np.ones(len(customer_ids))
-    conn = sqlite3.connect(db_path)
-    outcomes_df = pd.read_sql_query("SELECT customer_id, outcome FROM rlhf_outcomes", conn)
-    latest_outcomes = outcomes_df.groupby("customer_id")["outcome"].last().to_dict()
-    
-    for idx, cid in enumerate(customer_ids):
-        if cid in latest_outcomes:
-            if latest_outcomes[cid] == 1:
-                # Upweight successful retention interventions
-                weights[idx] = 2.0
-            else:
-                # Downweight failed interventions
-                weights[idx] = 0.5
-    return weights</pre>
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">FRONTEND ARCHITECTURE & DEPLOYMENT</span>
+                    <h2 class="slide-title">17. Standalone Web UI & Client-Side Fallback Scorer</h2>
                 </div>
             </div>
-        </div>
-
-        <!-- SLIDE 9: Hybrid Web UI -->
-        <div class="slide">
-            <div class="slide-tag">STEP 7 - HYBRID WEB UI</div>
-            <h2 class="slide-title">8. Hybrid Web UI & Client-Side Fallback (الموقع والوضع الهجين)</h2>
             <div class="two-col-layout">
                 <div class="desc-card">
-                    <div class="desc-title"><i class="fa-solid fa-laptop-code"></i> الشرح وتدفق البيانات:</div>
-                    <div class="desc-text">تم بناء واجهة الويب بتقنيات Glassmorphism ودعم النمط الهجين: يحاول الاتصال بسيرفر FastAPI أولاً، وفي حالة الاستضافة على GitHub Pages يتحول تلقائياً لمحرك استنتاج محلي داخل المتصفح.</div>
+                    <div class="desc-title"><i class="fa-solid fa-laptop-code"></i> Workflow & System Functionality:</div>
+                    <div class="desc-text">Built with vanilla Glassmorphic HTML5/CSS3/ES6+. When deployed on static GitHub Pages without a running Python backend, it seamlessly fails over to an internal browser heuristic risk scoring engine.</div>
                     <div class="points-title">Key Implementation Points:</div>
                     <ul class="points-list">
-                        <li>100% Standalone compatibility with GitHub Pages static hosting.</li>
-                        <li>Seamless fallback prevents alert crashes or network errors.</li>
-                        <li>Custom Glassmorphism Modals & Toasts replace native browser alerts.</li>
-                        <li>Interactive SHAP drivers highlight target form inputs on click.</li>
+                        <li>100% Standalone compatibility with static GitHub Pages hosting.</li>
+                        <li>Prevents alert crashes or network errors when offline.</li>
+                        <li>Custom Glassmorphic Modals replace browser alert dialogs.</li>
+                        <li>Interactive SHAP drivers highlight matching input form fields.</li>
                     </ul>
                 </div>
                 <div class="code-box">
-                    <div class="code-header"><i class="fa-solid fa-code"></i> JavaScript (index.html):</div>
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> JavaScript (index.html)</span>
+                    </div>
                     <pre>let data;
 try {
     const res = await fetch('/predict', {
@@ -650,34 +1216,107 @@ try {
             </div>
         </div>
 
-        <!-- SLIDE 10: Conclusion & Summary -->
+        <!-- SLIDE 19: Closed-Loop MLOps & RLHF Tracking -->
         <div class="slide">
-            <div class="slide-tag">PROJECT SUMMARY & RESULTS</div>
-            <h2 class="slide-title">9. Conclusion & Engineering Achievements (الخلاصة والنتائج)</h2>
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-val" style="color: #38bdf8;">0.8317</div>
-                    <div class="metric-label">XGBoost ROC-AUC Score</div>
-                    <div class="metric-desc">دقة تصنيف واستجابة عالية للنموذج في التنبؤ بسلوك العملاء.</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-val" style="color: #10b981;">99.47%</div>
-                    <div class="metric-label">At-Risk Recall Rate</div>
-                    <div class="metric-desc">القدرة على اكتشاف كل العملاء المعرضين للخروج لحمايتهم استباقياً.</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-val" style="color: #f59e0b;">0.16 / 0.32</div>
-                    <div class="metric-label">Optimal Threshold</div>
-                    <div class="metric-desc">حد القرار الأمثل لتعظيم الفائدة المالية وتقليل تكاليف التدخل.</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-val" style="color: #ec4899;">$4.15 Million</div>
-                    <div class="metric-label">Projected Net ROI</div>
-                    <div class="metric-desc">العائد المالي المتوقع بعد توفير تكاليف الاستبقاء وحفظ العملاء.</div>
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">STEP 8 - CONTINUOUS MLOPS LOOP</span>
+                    <h2 class="slide-title">18. Continuous MLOps & RLHF Sample Reweighting</h2>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: auto; font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: var(--primary);">
-                🎓 Thank You! (شكراً لكم على الاستماع) - Open for Questions & Discussion
+            <div class="two-col-layout">
+                <div class="desc-card">
+                    <div class="desc-title"><i class="fa-solid fa-arrows-rotate"></i> Workflow & System Functionality:</div>
+                    <div class="desc-text">Logs human call center intervention outcome labels (Retained / Churned) in SQLite database (rlhf_outcomes.db). Dynamically reweights retraining samples (2.0x for successful retentions, 0.5x for failed interventions) and monitors data drift via Evidently AI.</div>
+                    <div class="points-title">Key Implementation Points:</div>
+                    <ul class="points-list">
+                        <li>RLHF (Reinforcement Learning from Human Feedback) incorporates call center outcomes.</li>
+                        <li>Outcome=1 (Retained) receives 2.0x sample weight during model retraining.</li>
+                        <li>Outcome=0 (Churned) receives 0.5x sample weight to refine decision boundaries.</li>
+                        <li>Evidently AI monitors Population Stability Index (PSI) to trigger automated retraining pipelines.</li>
+                    </ul>
+                </div>
+                <div class="code-box">
+                    <div class="code-header">
+                        <span><i class="fa-solid fa-code"></i> Python (rlhf_reweighter.py)</span>
+                    </div>
+                    <pre>import sqlite3
+import pandas as pd
+import numpy as np
+
+def compute_sample_weights(customer_ids, db_path="data/rlhf_outcomes.db"):
+    weights = np.ones(len(customer_ids))
+    conn = sqlite3.connect(db_path)
+    outcomes_df = pd.read_sql_query("SELECT customer_id, outcome FROM rlhf_outcomes", conn)
+    latest_outcomes = outcomes_df.groupby("customer_id")["outcome"].last().to_dict()
+    
+    for idx, cid in enumerate(customer_ids):
+        if cid in latest_outcomes:
+            if latest_outcomes[cid] == 1:
+                weights[idx] = 2.0  # Upweight successful retention interventions
+            else:
+                weights[idx] = 0.5  # Downweight failed interventions
+    return weights</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 20: Interactive Sources, Kaggle Links & Academic References -->
+        <div class="slide">
+            <div class="slide-header-row">
+                <div>
+                    <span class="slide-tag">DATA SOURCES & REFERENCES</span>
+                    <h2 class="slide-title">19. Interactive Sources & Technical References</h2>
+                </div>
+            </div>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <div class="ref-card-title"><i class="fa-solid fa-database"></i> Kaggle Datasets & Project Links:</div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• IBM Telco Customer Churn (Kaggle)</div>
+                        <a href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn" target="_blank" class="link-url">https://www.kaggle.com/datasets/blastchar/telco-customer-churn</a>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• Bank Customer Churn (Kaggle)</div>
+                        <a href="https://www.kaggle.com/datasets/adammaus/predicting-churn-for-bank-customers" target="_blank" class="link-url">https://www.kaggle.com/datasets/adammaus/predicting-churn-for-bank-customers</a>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• Customer Support Tickets (Kaggle)</div>
+                        <a href="https://www.kaggle.com/datasets/suraj520/customer-support-ticket-dataset" target="_blank" class="link-url">https://www.kaggle.com/datasets/suraj520/customer-support-ticket-dataset</a>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• FastAPI Documentation</div>
+                        <a href="https://fastapi.tiangolo.com/" target="_blank" class="link-url">https://fastapi.tiangolo.com/</a>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• Optuna Optimization Framework</div>
+                        <a href="https://optuna.org/" target="_blank" class="link-url">https://optuna.org/</a>
+                    </div>
+                </div>
+
+                <div class="ref-card">
+                    <div class="ref-card-title" style="color: var(--violet);"><i class="fa-solid fa-book-bookmark"></i> Academic Papers & Research Links:</div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• XGBoost Paper (Chen & Guestrin 2016)</div>
+                        <a href="https://arxiv.org/abs/1603.02754" target="_blank" class="link-url">https://arxiv.org/abs/1603.02754</a>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• SHAP Paper (Lundberg & Lee 2017)</div>
+                        <a href="https://arxiv.org/abs/1705.07874" target="_blank" class="link-url">https://arxiv.org/abs/1705.07874</a>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• FAISS Vector Search (Johnson et al. 2019)</div>
+                        <a href="https://arxiv.org/abs/1702.08734" target="_blank" class="link-url">https://arxiv.org/abs/1702.08734</a>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• SMOTE Oversampling (Chawla et al. 2002)</div>
+                        <a href="https://arxiv.org/abs/1106.1813" target="_blank" class="link-url">https://arxiv.org/abs/1106.1813</a>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-item-name">• Optuna Paper (Akiba et al. 2019)</div>
+                        <a href="https://kdd.org/kdd2019/accepted-papers/view/optuna" target="_blank" class="link-url">https://kdd.org/kdd2019/accepted-papers/view/optuna</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -685,19 +1324,60 @@ try {
 
     <!-- Navigation Controls Bar -->
     <div class="controls-bar">
-        <button class="nav-btn" onclick="prevSlide()"><i class="fa-solid fa-arrow-right"></i> Previous (السابق)</button>
-        <span class="progress-indicator" id="slide-indicator">Slide 1 / 10</span>
-        <button class="nav-btn" onclick="nextSlide()">Next (التالي) <i class="fa-solid fa-arrow-left"></i></button>
+        <div class="left-controls">
+            <button class="icon-btn" onclick="toggleDrawer()" title="Slide Index Menu (Key: M)"><i class="fa-solid fa-list-ul"></i></button>
+            <button class="icon-btn" onclick="toggleFullScreen()" title="Full Screen (Key: F)"><i class="fa-solid fa-expand"></i></button>
+        </div>
+        
+        <span class="progress-indicator" id="slide-indicator">Slide 1 / 20</span>
+
+        <div class="right-controls">
+            <button class="nav-btn" onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+            <button class="nav-btn" onclick="nextSlide()">Next <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Slide Index Drawer Overlay -->
+    <div class="drawer-overlay" id="drawer-overlay">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <div class="drawer-title"><i class="fa-solid fa-table-cells-large"></i> Slide Index Navigator (20 Slides)</div>
+                <button class="icon-btn" onclick="toggleDrawer()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="drawer-grid" id="drawer-grid">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
     </div>
 
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const indicator = document.getElementById('slide-indicator');
+        const progressBar = document.getElementById('progress-bar');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+        const drawerGrid = document.getElementById('drawer-grid');
+
+        // Populate Drawer Index Grid
+        slides.forEach((s, idx) => {
+            const titleEl = s.querySelector('.slide-title') || s.querySelector('.main-hero-title');
+            const titleText = titleEl ? titleEl.innerText : `Slide ${idx + 1}`;
+            
+            const card = document.createElement('div');
+            card.className = 'drawer-card';
+            card.onclick = () => { jumpToSlide(idx); toggleDrawer(); };
+            card.innerHTML = `
+                <div class="drawer-card-num">SLIDE ${idx + 1}</div>
+                <div class="drawer-card-title">${titleText}</div>
+            `;
+            drawerGrid.appendChild(card);
+        });
 
         function showSlide(index) {
             slides.forEach((s, i) => s.classList.toggle('active', i === index));
             indicator.innerText = `Slide ${index + 1} / ${slides.length}`;
+            const pct = ((index + 1) / slides.length) * 100;
+            progressBar.style.width = `${pct}%`;
         }
 
         function nextSlide() {
@@ -714,9 +1394,29 @@ try {
             }
         }
 
+        function jumpToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+
+        function toggleDrawer() {
+            drawerOverlay.classList.toggle('active');
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === 'PageDown') nextSlide();
+            if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') nextSlide();
             if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+            if (e.key === 'Escape' && drawerOverlay.classList.contains('active')) toggleDrawer();
+            if (e.key === 'm' || e.key === 'M') toggleDrawer();
+            if (e.key === 'f' || e.key === 'F') toggleFullScreen();
         });
     </script>
 </body>
