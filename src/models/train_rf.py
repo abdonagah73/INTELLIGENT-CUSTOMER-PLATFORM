@@ -84,11 +84,14 @@ def main():
         print("Permutation Feature Importance complete. Saved top 15 features.")
         
         # Serialize model
+        import gzip
         feature_store_dir = "data/feature_store"
         with open(os.path.join(feature_store_dir, "rf_model.pkl"), "wb") as f:
             pickle.dump(model, f)
+        with gzip.open(os.path.join(feature_store_dir, "rf_model.pkl.gz"), "wb") as f:
+            pickle.dump(model, f)
             
-    print("Random Forest baseline model saved and logged.")
+    print("Random Forest baseline model saved and logged (both pkl and compressed pkl.gz).")
 
 if __name__ == "__main__":
     main()
